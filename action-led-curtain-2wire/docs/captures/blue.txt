@@ -1,0 +1,6 @@
+# Stock controller, fixed colour BLUE, full brightness.
+-- frame 11 --
+00 01 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00
+00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00
+...
+   end of frame 11: 9617 bits, then 39.4 us pause

@@ -1,0 +1,12 @@
+# Raw pulse widths on L1- (through a 2k/2k/1k divider into an ESP32-S3 GPIO sampled at 10 MHz),
+# stock controller, fixed colour. H = line high = LED current interrupted, L = current flowing.
+# Captured with firmware/pulse_capture. Resolution 0.1 us.
+L 5.90   H 4.50   L 6.00   H 4.40   L 6.00   H 2.40
+L 2.80   H 2.40   L 2.80   H 2.40   L 2.80   H 2.40
+L 2.80   H 4.50   L 5.90   H 4.50   L 5.90   H 4.50
+L 5.90   H 4.50   L 5.90   H 2.50   L 2.80   H 2.40
+...
+Transitions in 6 ms: 1626
+Histogram HIGH pulses:  1-5 us: 813   (two clusters: ~2.4-2.5 us and ~4.4-4.5 us)
+Histogram LOW pulses:   1-5 us: 473   5-50 us: 340   (clusters: ~2.7-2.8 us and ~5.9-6.0 us)
+No gaps > 50 us within the 6 ms window: frames are sent back to back.

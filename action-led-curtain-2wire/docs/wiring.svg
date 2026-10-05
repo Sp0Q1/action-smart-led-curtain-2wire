@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" font-family="Helvetica, Arial, sans-serif">
+  <title>Driving the Action 2-wire LED curtain with an ESP32 and a low-side switch</title>
+  <rect width="760" height="470" fill="#ffffff"/>
+
+  <!-- Stock controller board -->
+  <rect x="40" y="40" width="220" height="150" rx="10" fill="#f3f3f0" stroke="#888780" stroke-width="1.2"/>
+  <text x="150" y="66" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Stock controller board</text>
+  <text x="150" y="86" text-anchor="middle" font-size="12" fill="#555">KR-026-R1, stays as 5 V supply</text>
+  <text x="250" y="116" text-anchor="end" font-size="13" fill="#222">L+</text>
+  <text x="250" y="146" text-anchor="end" font-size="13" fill="#222">L1-</text>
+  <text x="50" y="176" text-anchor="start" font-size="13" fill="#222">GND</text>
+  <text x="150" y="176" text-anchor="middle" font-size="11" fill="#555">VIN: 13 V adapter</text>
+
+  <!-- Curtain -->
+  <rect x="500" y="40" width="220" height="150" rx="10" fill="#f3f3f0" stroke="#888780" stroke-width="1.2"/>
+  <text x="610" y="66" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">LED curtain</text>
+  <text x="610" y="86" text-anchor="middle" font-size="12" fill="#555">400 LEDs, 20 strands of 20</text>
+  <text x="510" y="116" text-anchor="start" font-size="13" fill="#222">L+</text>
+  <text x="510" y="146" text-anchor="start" font-size="13" fill="#222">L1-</text>
+
+  <!-- ESP32 -->
+  <rect x="40" y="260" width="220" height="150" rx="10" fill="#eeedf8" stroke="#7F77DD" stroke-width="1.2"/>
+  <text x="150" y="286" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">ESP32</text>
+  <text x="150" y="306" text-anchor="middle" font-size="12" fill="#555">any model, 3.3 V logic</text>
+  <text x="250" y="336" text-anchor="end" font-size="13" fill="#222">GPIO (OUT_PIN)</text>
+  <text x="250" y="386" text-anchor="end" font-size="13" fill="#222">GND</text>
+
+  <!-- Switch -->
+  <rect x="380" y="300" width="110" height="90" rx="8" fill="#e6f4f1" stroke="#2E9E8B" stroke-width="1.2"/>
+  <text x="435" y="322" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Switch</text>
+  <text x="435" y="340" text-anchor="middle" font-size="11" fill="#444">D / C</text>
+  <text x="396" y="350" text-anchor="middle" font-size="11" fill="#444">G / B</text>
+  <text x="435" y="380" text-anchor="middle" font-size="11" fill="#444">S / E</text>
+  <text x="505" y="330" text-anchor="start" font-size="12" fill="#222">N-MOSFET IRLZ44N / AO3400</text>
+  <text x="505" y="348" text-anchor="start" font-size="12" fill="#222">(or NPN BC337 for low brightness)</text>
+  <text x="505" y="366" text-anchor="start" font-size="11" fill="#555">BC337 flat face: C B E</text>
+
+  <!-- L+ wire -->
+  <line x1="260" y1="112" x2="500" y2="112" stroke="#D85A30" stroke-width="2"/>
+  <text x="380" y="104" text-anchor="middle" font-size="11" fill="#D85A30">5 V, untouched</text>
+
+  <!-- L1- cut stub and wire to drain -->
+  <line x1="260" y1="142" x2="290" y2="142" stroke="#7F77DD" stroke-width="2"/>
+  <text x="300" y="146" text-anchor="start" font-size="11" fill="#555">cut here (stub stays)</text>
+  <line x1="500" y1="142" x2="435" y2="142" stroke="#7F77DD" stroke-width="2"/>
+  <line x1="435" y1="142" x2="435" y2="300" stroke="#7F77DD" stroke-width="2"/>
+  <text x="446" y="230" text-anchor="start" font-size="11" fill="#7F77DD">pulsed return (data)</text>
+
+  <!-- Ground rail -->
+  <line x1="40" y1="172" x2="24" y2="172" stroke="#888780" stroke-width="2"/>
+  <line x1="24" y1="172" x2="24" y2="440" stroke="#888780" stroke-width="2"/>
+  <line x1="24" y1="440" x2="560" y2="440" stroke="#888780" stroke-width="2"/>
+  <line x1="260" y1="382" x2="290" y2="382" stroke="#888780" stroke-width="2"/>
+  <line x1="290" y1="382" x2="290" y2="440" stroke="#888780" stroke-width="2"/>
+  <circle cx="290" cy="440" r="4" fill="#888780"/>
+  <line x1="435" y1="390" x2="435" y2="440" stroke="#888780" stroke-width="2"/>
+  <circle cx="435" cy="440" r="4" fill="#888780"/>
+  <text x="300" y="458" text-anchor="start" font-size="12" fill="#444">common ground: board, ESP32 and switch</text>
+
+  <!-- Gate resistor -->
+  <line x1="260" y1="332" x2="285" y2="332" stroke="#888780" stroke-width="2"/>
+  <rect x="285" y="324" width="50" height="16" rx="3" fill="#ffffff" stroke="#444" stroke-width="1.2"/>
+  <text x="310" y="316" text-anchor="middle" font-size="11" fill="#222">100 Ω (MOSFET) / 220 Ω (NPN)</text>
+  <line x1="335" y1="332" x2="380" y2="332" stroke="#888780" stroke-width="2"/>
+  <circle cx="355" cy="332" r="4" fill="#888780"/>
+
+  <!-- Pull-down -->
+  <line x1="355" y1="332" x2="355" y2="355" stroke="#888780" stroke-width="2"/>
+  <rect x="347" y="355" width="16" height="50" rx="3" fill="#ffffff" stroke="#444" stroke-width="1.2"/>
+  <line x1="355" y1="405" x2="355" y2="440" stroke="#888780" stroke-width="2"/>
+  <circle cx="355" cy="440" r="4" fill="#888780"/>
+  <text x="340" y="384" text-anchor="end" font-size="11" fill="#222">10 kΩ</text>
+
+  <!-- Note -->
+  <text x="40" y="236" text-anchor="start" font-size="11" fill="#555">L2- pad on the board: unused on the 2-wire unit.</text>
+</svg>

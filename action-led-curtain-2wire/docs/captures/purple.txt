@@ -1,0 +1,6 @@
+# Stock controller, a blue-purple preset: R=7 G=0 B=30 per LED.
+-- frame 11 --
+00 01 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07
+00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07 00 1E 07
+...
+   end of frame 11: 9617 bits, then 39.5 us pause

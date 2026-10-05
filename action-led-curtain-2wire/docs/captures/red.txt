@@ -1,0 +1,7 @@
+# Stock controller, fixed colour RED, full brightness. Captured with firmware/pulse_decode
+# (short pulse = 0, long pulse = 1, MSB first). Each LED = 3 bytes R G B.
+-- frame 8 --
+00 01 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E
+00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E 00 00 1E
+...
+   end of frame 8: 9617 bits, then 39.4 us pause
