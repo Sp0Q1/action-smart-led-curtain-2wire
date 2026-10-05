@@ -3,7 +3,8 @@
 //
 // Protocol (uit de opnames):
 //   frame = 00 01, daarna per led 3 bytes R G B (max 30), daarna 1 los bit,
-//   daarna minstens 40 us rust met de stroom aan.
+//   daarna minstens 40 us rust met de stroom aan. Frames bijna aaneengesloten
+//   zenden (FRAME_MS 1): met lange pauzes flikkeren de leds.
 //   bit 0 = stroom 2,5 us uit + 2,8 us aan
 //   bit 1 = stroom 4,5 us uit + 5,9 us aan
 //
@@ -19,17 +20,18 @@
 
 #include <Arduino.h>
 #include "soc/gpio_reg.h"
+#include "driver/gpio.h"
 
 #define OUT_PIN    6
 #define NUM_LEDS   400
 #define MAX_VAL    10      // stock controller uses up to 30; keep low with a small NPN transistor
 #define INVERT     0
 #define TRAIL_BIT  0
-#define FRAME_MS   40      // rust tussen frames
+#define FRAME_MS   1       // rust tussen frames; groter geeft flikkering
 
-#define T0_OFF 25          // pulsbreedtes in 0,1 us
+#define T0_OFF 27          // pulsbreedtes in 0,1 us (iets langer dan gemeten: transistor gaat traag uit)
 #define T0_ON  28
-#define T1_OFF 45
+#define T1_OFF 50
 #define T1_ON  59
 
 static uint8_t frame[2 + NUM_LEDS * 3];
@@ -88,6 +90,7 @@ void showFor(unsigned long ms) {
 void setup() {
   Serial.begin(115200);
   pinMode(OUT_PIN, OUTPUT);
+  gpio_set_drive_capability((gpio_num_t)OUT_PIN, GPIO_DRIVE_CAP_3);
   stroomAan();                          // in rust: stroom aan
   cyc100ns = getCpuFrequencyMhz() / 10;
   frame[0] = 0x00;
